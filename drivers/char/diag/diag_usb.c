@@ -461,7 +461,7 @@ static int diag_usb_write_ext(struct diag_usb_info *usb_info,
 		diag_ws_on_read(DIAG_WS_MUX, len);
 		err = usb_diag_write(usb_info->hdl, req);
 		diag_ws_on_copy(DIAG_WS_MUX);
-#ifdef CONFIG_MACH_LEECO
+#ifdef CONFIG_VENDOR_LEECO
 		spin_unlock_irqrestore(&usb_info->write_lock, flags);
 #endif
 		if (err) {

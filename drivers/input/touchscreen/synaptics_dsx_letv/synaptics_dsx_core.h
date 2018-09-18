@@ -39,7 +39,7 @@
 #define SYNAPTICS_DSX_DRIVER_PRODUCT (SYNAPTICS_DS4 | SYNAPTICS_DS5)
 #define SYNAPTICS_DSX_DRIVER_VERSION 0x2050
 
-#ifdef CONFIG_MACH_LEECO_ZL1
+#ifdef CONFIG_PRODUCT_LE_ZL1
 #define OPEN_CHARGE_BIT
 #define ESD_CHECK_SUPPORT
 #endif
@@ -120,7 +120,7 @@
 #define MASK_2BIT 0x03
 #define MASK_1BIT 0x01
 
-#ifdef CONFIG_MACH_LEECO_ZL1
+#ifdef CONFIG_PRODUCT_LE_ZL1
 #define PINCTRL_STATE_ACTIVE    "pmx_ts_active"
 #define PINCTRL_STATE_SUSPEND   "pmx_ts_suspend"
 #define PINCTRL_STATE_RELEASE   "pmx_ts_release"
@@ -403,7 +403,7 @@ struct synaptics_rmi4_data {
 			bool attn_only);
 	void (*sleep_enable)(struct synaptics_rmi4_data *rmi4_data,
 			bool enable);
-#ifdef CONFIG_MACH_LEECO_ZL1
+#ifdef CONFIG_PRODUCT_LE_ZL1
 	struct pinctrl *ts_pinctrl;
 	struct pinctrl_state *pinctrl_state_active;
 	struct pinctrl_state *pinctrl_state_suspend;

@@ -122,7 +122,7 @@ config TOUCHSCREEN_ATMEL_MXT
 
 config TOUCHSCREEN_ATMEL_MAXTOUCH_TS
 	tristate "Atmel Maxtouch Touchscreen Family"
-	depends on I2C && !MACH_LEECO
+	depends on I2C && !VENDOR_LEECO
 	help
 	  Say Y here if you have Atmel MaXTouch Touchscreen
 	  using i2c connected to your system.

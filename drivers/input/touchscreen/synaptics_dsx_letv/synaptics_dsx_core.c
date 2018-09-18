@@ -3192,7 +3192,7 @@ static int synaptics_rmi4_gpio_setup(int gpio, bool config, int dir, int state)
 	return retval;
 }
 
-#ifdef CONFIG_MACH_LEECO_ZL1
+#ifdef CONFIG_PRODUCT_LE_ZL1
 static int synaptics_dsx_pinctrl_init(struct synaptics_rmi4_data *rmi4_data)
 {
 	int retval;
@@ -4221,7 +4221,7 @@ static int synaptics_rmi4_probe(struct platform_device *pdev)
 		goto err_enable_reg;
 	}
 
-#ifdef CONFIG_MACH_LEECO_ZL1
+#ifdef CONFIG_PRODUCT_LE_ZL1
 	retval = synaptics_dsx_pinctrl_init(rmi4_data);
 	if (!retval && rmi4_data->ts_pinctrl) {
 	/*
@@ -4421,7 +4421,7 @@ err_set_input_dev:
 
 err_ui_hw_init:
 err_set_gpio:
-#ifdef CONFIG_MACH_LEECO_ZL1
+#ifdef CONFIG_PRODUCT_LE_ZL1
 	if (NULL != rmi4_data->ts_pinctrl) {
 		devm_pinctrl_put(rmi4_data->ts_pinctrl);
 	}
@@ -4809,7 +4809,7 @@ static int synaptics_rmi4_suspend(struct device *dev)
 {
 	struct synaptics_rmi4_exp_fhandler *exp_fhandler;
 	struct synaptics_rmi4_data *rmi4_data = dev_get_drvdata(dev);
-#if defined(CONFIG_MACH_LEECO_ZL1) || defined(FB_READY_RESET)
+#if defined(CONFIG_PRODUCT_LE_ZL1) || defined(FB_READY_RESET)
 	int retval;
 #endif
 
@@ -4833,7 +4833,7 @@ static int synaptics_rmi4_suspend(struct device *dev)
 		}
 	}
 
-#ifdef CONFIG_MACH_LEECO_ZL1
+#ifdef CONFIG_PRODUCT_LE_ZL1
 	if (rmi4_data->ts_pinctrl) {
 		retval = pinctrl_select_state(rmi4_data->ts_pinctrl,
 			rmi4_data->pinctrl_state_suspend);
@@ -4860,7 +4860,7 @@ exit:
 
 static int synaptics_rmi4_resume(struct device *dev)
 {
-#if defined(CONFIG_MACH_LEECO_ZL1) || defined(FB_READY_RESET)
+#if defined(CONFIG_PRODUCT_LE_ZL1) || defined(FB_READY_RESET)
 	int retval;
 #endif
 	struct synaptics_rmi4_exp_fhandler *exp_fhandler;
@@ -4871,7 +4871,7 @@ static int synaptics_rmi4_resume(struct device *dev)
 	if (rmi4_data->stay_awake)
 		return 0;
 
-#ifdef CONFIG_MACH_LEECO_ZL1
+#ifdef CONFIG_PRODUCT_LE_ZL1
 	if (rmi4_data->ts_pinctrl) {
 		retval = pinctrl_select_state(rmi4_data->ts_pinctrl,
 				rmi4_data->pinctrl_state_active);
